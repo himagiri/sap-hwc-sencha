@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:schema xmlns:tns="http://www.w3.org/2001/XMLSchema">
+
+  <tns:element name="Workflow">
+    <tns:complexType>
+      <tns:all>
+        <tns:element name="Globals" type="globalsType" minOccurs="1" maxOccurs="1" />
+        <tns:element name="Triggers" type="triggersType" minOccurs="1" maxOccurs="1"/>
+      </tns:all>
+    </tns:complexType>
+  </tns:element>
+
+  <tns:complexType name="globalsType">
+    <tns:all>
+      <tns:element name="DefaultScreens" type="defaultScreensType" minOccurs="0" maxOccurs="1" />
+    </tns:all>
+  </tns:complexType>
+
+  <tns:complexType name="defaultScreensType">
+    <tns:attribute name="credentials" type="tns:string" use="optional" />
+    <tns:attribute name="activation" type="tns:string" use="optional" />
+  </tns:complexType>
+
+  <tns:complexType name="triggersType">
+    <tns:all>
+      <tns:element name="Actions" type="actionListType" minOccurs="1"	maxOccurs="1"></tns:element>
+      <tns:element name="Notifications" type="notificationListType"	minOccurs="1" maxOccurs="1"></tns:element>
+    </tns:all>
+  </tns:complexType>
+
+  <tns:complexType name="actionListType">
+    <tns:sequence minOccurs="0" maxOccurs="unbounded">
+      <tns:element name="Action" type="actionType"></tns:element>
+    </tns:sequence>
+  </tns:complexType>
+
+  <tns:complexType name="notificationListType">
+    <tns:sequence minOccurs="0" maxOccurs="unbounded">
+      <tns:element name="Notification" type="notificationType"></tns:element>
+    </tns:sequence>
+  </tns:complexType>
+
+  <tns:complexType name="actionType">
+    <tns:sequence minOccurs="0" maxOccurs="1">
+      <tns:element name="Methods" type="methodListType"></tns:element>
+    </tns:sequence>
+    <tns:attribute name="name" type="tns:string" use="required"></tns:attribute>
+    <tns:attribute name="sourcescreen" type="tns:string" use="required"></tns:attribute>
+    <tns:attribute name="targetscreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorscreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogskey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogmessagekey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogmessageaslistkey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorScreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorNotificationSubjectLine" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorNotificationFromLine" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorlogs" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorLogMessage" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorLogMessageAsList" type="tns:string" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="methodListType">
+    <tns:sequence minOccurs="1" maxOccurs="unbounded">
+      <tns:element name="Method" type="methodType"></tns:element>
+    </tns:sequence>
+  </tns:complexType>
+
+  <tns:complexType name="methodType">
+    <tns:sequence maxOccurs="1" minOccurs="1">
+      <tns:element name="InputBinding" type="inputBindingType" minOccurs="0" maxOccurs="1" />
+      <tns:element name="OutputBinding" type="outputBindingType" minOccurs="0" maxOccurs="1" />
+    </tns:sequence>
+    <tns:attribute name="type" type="supportedMethodTypes" use="required"></tns:attribute>
+    <tns:attribute name="name" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="maxresults" type="tns:int" use="optional"></tns:attribute>
+    <tns:attribute name="mbo" type="tns:string" use="required"></tns:attribute>
+    <tns:attribute name="package" type="tns:string" use="required"></tns:attribute>
+    <tns:attribute name="user" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="password" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="showCredScreenOnAuthFailure" type="tns:boolean" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="inputBindingType">
+    <tns:sequence minOccurs="0" maxOccurs="unbounded">
+      <tns:element name="Value" type="valueType"></tns:element>
+    </tns:sequence>
+    <tns:attribute name="actiontype" type="supportedActionTypes" use="optional"></tns:attribute>
+    <tns:attribute name="optype" type="supportedOpTypes" use="optional"></tns:attribute>
+    <tns:attribute name="opname" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="generateOld" type="tns:boolean" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="outputBindingType">
+    <tns:sequence minOccurs="0"	maxOccurs="unbounded">
+      <tns:element name="Mapping" type="mappingType"></tns:element>
+    </tns:sequence>
+    <tns:attribute name="generateOld" type="tns:boolean" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="valueType">
+    <tns:sequence minOccurs="0" maxOccurs="unbounded">
+	<tns:element name="InputBinding" type="inputBindingType" maxOccurs="1" minOccurs="0" />
+        <tns:element name="Value" type="valueType" maxOccurs="unbounded" minOccurs="0"/>
+    </tns:sequence>
+    <tns:attribute name="sourceType" use="required">
+      <tns:simpleType>
+        <tns:restriction base="tns:string">
+          <tns:enumeration value="Key"></tns:enumeration>
+          <tns:enumeration value="BackEndPassword"></tns:enumeration>
+          <tns:enumeration value="BackEndUser"></tns:enumeration>
+          <tns:enumeration value="DeviceId"></tns:enumeration>
+          <tns:enumeration value="DeviceName"></tns:enumeration>
+          <tns:enumeration value="DeviceType"></tns:enumeration>
+          <tns:enumeration value="UserName"></tns:enumeration>
+          <tns:enumeration value="MessageId"></tns:enumeration>
+          <tns:enumeration value="ModuleName"></tns:enumeration>
+          <tns:enumeration value="ModuleVersion"></tns:enumeration>
+          <tns:enumeration value="QueueId"></tns:enumeration>
+          <tns:enumeration value="ContextVariable"></tns:enumeration>
+        </tns:restriction>
+      </tns:simpleType>
+    </tns:attribute>
+    <tns:attribute name="workflowKey" type="tns:string"></tns:attribute>
+    <tns:attribute name="contextVariable" type="tns:string"></tns:attribute>
+    <tns:attribute name="customPropertyIndex" type="tns:int"></tns:attribute>
+
+    <!-- either pkName or paramName must be present -->
+    <tns:attribute name="pkName" type="tns:string" use="optional"></tns:attribute>
+
+    <!-- previously paramName used to be called jsonName, 
+    but because of the fillFrom codeGen behavior that wasn't the right name -->
+    <tns:attribute name="paramName" type="tns:string" use="optional"></tns:attribute>
+    
+    <!-- this is filled if the param is filled From attribute, or if this value is an attribute def -->
+    <tns:attribute name="attribName" type="tns:string"></tns:attribute>
+
+    <tns:attribute name="relationShipName" type="tns:string"></tns:attribute>
+    
+    <tns:attribute name="parentMbo" type="tns:string"></tns:attribute>
+    
+    <tns:attribute name="mboType" type="supportedMboTypes" use="required"></tns:attribute>
+
+    <tns:attribute name="array" type="tns:boolean" default="false" use="optional"/>
+           
+    <tns:attribute name="length" type="tns:long" use="optional"></tns:attribute>
+    <!-- string (chars), binary (bytes) not set=unlimeted -->
+    <tns:attribute name="precision" type="tns:int" use="optional"></tns:attribute>
+    <!-- -->
+    <tns:attribute name="scale" type="tns:int" use="optional"></tns:attribute>
+    <!-- -->
+    <!-- convertToLocalTime, default = false -->
+    <tns:attribute name="convertToLocalTime" type="tns:boolean" use="optional"></tns:attribute>
+    <tns:attribute name="pkDefaultValue" type="tns:string" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="mappingType">
+    <tns:sequence minOccurs="0" maxOccurs="unbounded">
+      <tns:element name="Mapping" type="mappingType"></tns:element>
+    </tns:sequence>
+    <tns:attribute name="workflowKey" type="tns:string" use="required"></tns:attribute>
+    
+    <!-- required unless workflowType is choice or hardCodedValue is specified -->
+    <tns:attribute name="attribName" type="tns:string" use="optional"></tns:attribute>
+    <!-- required unless workflowType is choice or hardCodedValue is specified -->
+    <tns:attribute name="relationShipName" type="tns:string" use="optional"></tns:attribute>
+    <!-- required unless workflowType is choice or hardCodedValue is specified -->
+    <tns:attribute name="mboType" type="supportedMboTypes" use="optional"></tns:attribute>
+
+    <tns:attribute name="array" type="tns:boolean" default="false" use="optional"/>
+    
+    <tns:attribute name="workflowType" type="supportedWorkflowTypes" use="required"></tns:attribute>
+    
+    <!-- assumeLocalTime, default = false -->
+    <tns:attribute name="assumeLocalTime" type="tns:boolean" use="optional"></tns:attribute>
+    
+    <!-- required if workflowType is choice -->
+    <tns:attribute name="keyWorkflowKey" type="tns:string" use="optional"></tns:attribute>
+    <!-- required if workflowType is choice -->
+    <tns:attribute name="valueWorkflowKey" type="tns:string" use="optional"></tns:attribute>
+
+    <!-- required if workflowType is not choice and attribName is not specified -->
+    <tns:attribute name="hardCodedValue" type="tns:string" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="notificationType">
+    <tns:sequence minOccurs="0" maxOccurs="1">
+      <tns:element name="Transformation" type="transformationListType"></tns:element>
+      <tns:element name="Methods" type="methodListType"></tns:element>
+    </tns:sequence>
+    <tns:attribute name="type" use="required">
+      <tns:simpleType>
+        <tns:restriction base="tns:string">
+          <!-- <tns:enumeration value="onReadDetails"></tns:enumeration>
+          <tns:enumeration value="onCreate"></tns:enumeration>
+          <tns:enumeration value="onDelete"></tns:enumeration>
+          <tns:enumeration value="onUpdate"></tns:enumeration> -->
+          <tns:enumeration value="onEmailTriggered"></tns:enumeration>
+        </tns:restriction>
+      </tns:simpleType>
+    </tns:attribute>
+    <tns:attribute name="targetscreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorscreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogskey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogmessagekey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorlogmessageaslistkey" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorScreen" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorNotificationSubjectLine" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="errorNotificationFromLine" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorlogs" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorLogMessage" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="asyncRequestErrorLogMessageAsList" type="tns:string" use="optional"></tns:attribute>
+  </tns:complexType>
+
+  <tns:complexType name="transformationListType">
+    <tns:sequence minOccurs="1" maxOccurs="unbounded">
+      <tns:element name="Rule" type="ruleType"></tns:element>
+    </tns:sequence>
+  </tns:complexType>
+
+  <tns:complexType name="ruleType">
+    <tns:attribute name="type" use="required">
+      <tns:simpleType>
+        <tns:restriction base="tns:string">
+          <tns:enumeration value="regex-extract"></tns:enumeration>
+        </tns:restriction>
+      </tns:simpleType>
+    </tns:attribute>
+    <tns:attribute name="source" use="required">
+      <tns:simpleType>
+        <tns:restriction base="tns:string">
+          <tns:enumeration value="body"></tns:enumeration>
+          <tns:enumeration value="subject"></tns:enumeration>
+          <tns:enumeration value="from"></tns:enumeration>
+          <tns:enumeration value="to"></tns:enumeration>
+          <tns:enumeration value="cc"></tns:enumeration>
+          <tns:enumeration value="receivedDate"></tns:enumeration>
+          <tns:enumeration value="custom1"></tns:enumeration>
+          <tns:enumeration value="custom2"></tns:enumeration>
+          <tns:enumeration value="custom3"></tns:enumeration>
+          <tns:enumeration value="custom4"></tns:enumeration>
+          <tns:enumeration value="custom5"></tns:enumeration>
+          <tns:enumeration value="custom6"></tns:enumeration>
+          <tns:enumeration value="custom7"></tns:enumeration>
+          <tns:enumeration value="custom8"></tns:enumeration>
+          <tns:enumeration value="custom9"></tns:enumeration>
+          <tns:enumeration value="custom10"></tns:enumeration>
+        </tns:restriction>
+      </tns:simpleType>
+    </tns:attribute>
+    <tns:attribute name="workflowKey" type="tns:string" use="required"></tns:attribute>
+    <tns:attribute name="workflowType" type="supportedWorkflowTypes" use="required"></tns:attribute>
+    <tns:attribute name="assumeLocalTime" type="tns:boolean" use="optional"></tns:attribute>
+    <tns:attribute name="beforeMatch" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="afterMatch" type="tns:string" use="optional"></tns:attribute>
+    <tns:attribute name="format" type="tns:string" use="optional"></tns:attribute>
+  </tns:complexType>
+  
+  <tns:simpleType name="supportedMboTypes">
+    <tns:restriction base="tns:string">
+      <tns:enumeration value="string"></tns:enumeration>
+      <tns:enumeration value="char"></tns:enumeration>
+      <tns:enumeration value="date"></tns:enumeration>
+      <tns:enumeration value="datetime"></tns:enumeration>
+      <tns:enumeration value="time"></tns:enumeration>
+      <tns:enumeration value="int"></tns:enumeration>
+      <tns:enumeration value="byte"></tns:enumeration>
+      <tns:enumeration value="short"></tns:enumeration>
+      <tns:enumeration value="long"></tns:enumeration>
+      <tns:enumeration value="decimal"></tns:enumeration>
+      <tns:enumeration value="boolean"></tns:enumeration>
+      <tns:enumeration value="binary"></tns:enumeration>
+      <tns:enumeration value="float"></tns:enumeration>
+      <tns:enumeration value="double"></tns:enumeration>
+      <tns:enumeration value="list"></tns:enumeration>
+      <tns:enumeration value="integer"></tns:enumeration>
+      <tns:enumeration value="structure"></tns:enumeration>
+      <tns:enumeration value="bigbinary"></tns:enumeration>
+      <tns:enumeration value="bigstring"></tns:enumeration>
+    </tns:restriction>
+  </tns:simpleType>
+  
+  <tns:simpleType name="supportedWorkflowTypes">
+    <tns:restriction base="tns:string">
+      <tns:enumeration value="text"></tns:enumeration>
+      <tns:enumeration value="number"></tns:enumeration>
+      <tns:enumeration value="boolean"></tns:enumeration>
+      <tns:enumeration value="datetime"></tns:enumeration>
+      <tns:enumeration value="date"></tns:enumeration>
+      <tns:enumeration value="time"></tns:enumeration>
+      <tns:enumeration value="list"></tns:enumeration>
+      <tns:enumeration value="choice"></tns:enumeration>
+    </tns:restriction>
+  </tns:simpleType>
+
+  <tns:simpleType name="supportedMethodTypes">
+    <tns:restriction base="tns:string">
+      <tns:enumeration value="replay"></tns:enumeration>
+      <tns:enumeration value="search"></tns:enumeration>
+    </tns:restriction>
+  </tns:simpleType>
+
+  <tns:simpleType name="supportedOpTypes">
+    <tns:restriction base="tns:string">
+      <tns:enumeration value="none"></tns:enumeration>
+      <tns:enumeration value="create"></tns:enumeration>
+      <tns:enumeration value="update"></tns:enumeration>
+      <tns:enumeration value="delete"></tns:enumeration>
+      <tns:enumeration value="other"></tns:enumeration>
+    </tns:restriction>
+  </tns:simpleType>
+
+  <tns:simpleType name="supportedActionTypes">
+    <tns:restriction base="tns:string">
+      <tns:enumeration value="none"></tns:enumeration>
+      <tns:enumeration value="create"></tns:enumeration>
+      <tns:enumeration value="update"></tns:enumeration>
+      <tns:enumeration value="delete"></tns:enumeration>
+    </tns:restriction>
+  </tns:simpleType>
+
+</tns:schema>

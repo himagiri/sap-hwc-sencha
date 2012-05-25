@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+   <!-- Generic, non-empty strings -->
+   <xs:simpleType name="stringtype">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <!-- Regular expression strings -->
+   <xs:simpleType name="regexptype">
+      <xs:restriction base="xs:string" />
+   </xs:simpleType>
+
+   <!-- File names: length restrictions.  Note that all file names are 
+        relative to the root of the package.
+    -->
+   <xs:simpleType name="filenametype">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+         <xs:maxLength value="256"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <!-- Object names: length restrictions -->
+   <xs:simpleType name="objectnametype">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+         <xs:maxLength value="100"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <!-- CredentialsKey: length restriction -->
+   <xs:simpleType name="credentialskeytype">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+         <xs:maxLength value="64"/>
+      </xs:restriction>
+   </xs:simpleType>
+
+   <!-- Custom field regular expression: has a required attribute indicating the field number -->
+   <xs:complexType name="customfieldtype">
+      <xs:simpleContent>
+         <xs:extension base="regexptype">
+            <xs:attribute name="CustomFieldNum" type="xs:integer" use="required" />
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+
+   <!-- Server plugin definition: assembly file and object name -->
+   <xs:complexType name="serverplugintype">
+      <xs:all>
+         <xs:element name="File" type="filenametype" maxOccurs="1" minOccurs="1" />
+         <xs:element name="Class" type="objectnametype" maxOccurs="1" minOccurs="1" />
+      </xs:all>
+   </xs:complexType>
+
+   <!-- Client xml plugin definition: xml file required -->
+   <xs:complexType name="xmlworkflowtype">
+      <xs:all>
+         <xs:element name="File" type="filenametype" maxOccurs="1" minOccurs="1" />
+         <xs:element name="CredentialScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+         <xs:element name="ProcessedScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+         <xs:element name="ActivationScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+      </xs:all>
+   </xs:complexType>
+
+   <!-- Client compact framework plugin definition: dll file and object name required -->
+   <xs:complexType name="cfworkflowtype">
+      <xs:all>
+         <xs:element name="File" type="filenametype" maxOccurs="1" minOccurs="1" />
+         <xs:element name="Class" type="objectnametype" maxOccurs="1" minOccurs="1" />
+         <xs:element name="CredentialScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+         <xs:element name="ProcessedScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+         <xs:element name="ActivationScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+      </xs:all>
+   </xs:complexType>
+
+   <!-- HtmlWorkflow definition: bootstrap xml file required -->
+   <xs:complexType name="htmlworkflowtype">
+      <xs:sequence>
+         <xs:element name="File" type="filenametype" maxOccurs="1" minOccurs="1" />
+         <xs:element name="HtmlFiles" type="htmlfilestype" />
+         <xs:element name="CredentialScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+         <xs:element name="ActivationScreen" type="objectnametype" maxOccurs="1" minOccurs="0" />
+      </xs:sequence>
+   </xs:complexType>
+   
+   <xs:complexType name="htmlfilestype">
+      <xs:sequence>
+         <xs:element maxOccurs="unbounded" name="HtmlFile" type="xs:string" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <!-- Client plugin definitions must be one of the previously defined types -->
+   <xs:complexType name="workflowchoice">
+      <xs:choice>
+         <xs:element name="CFWorkflow" type="cfworkflowtype" />
+         <xs:element name="XMLWorkflow" type="xmlworkflowtype" />
+         <xs:element name="HTMLWorkflow" type="htmlworkflowtype" />
+      </xs:choice>
+   </xs:complexType>
+
+   <!-- Client plugin list: can contain specs for windows mobile, symbian, or both -->
+   <xs:complexType name="clientworkflowstype">
+      <xs:all>
+         <xs:element name="WindowsMobileStandard" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="WindowsMobileProfessional" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="Symbian" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="iPhone" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="BlackBerry" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="BlackBerry6" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+         <xs:element name="Android" type="workflowchoice" maxOccurs="1" minOccurs="0" />
+      </xs:all>
+   </xs:complexType>
+
+   <!-- Context variable list -->
+   <xs:complexType name="contextvariablestype">
+      <xs:sequence>
+         <xs:element name="ContextVariable" type="contextvariabletype" maxOccurs="unbounded" minOccurs="1" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <!-- Context variable definition: has a required name and an optional initial value -->
+   <xs:complexType name="contextvariabletype">
+      <xs:sequence>
+         <xs:element name="Name" minOccurs="1" maxOccurs="1">
+            <xs:simpleType>
+               <xs:restriction base="xs:string">
+                  <xs:maxLength value="256"/>
+                  <xs:minLength value="1"/>
+               </xs:restriction>
+            </xs:simpleType>
+         </xs:element>
+         <xs:element name="Value" type="xs:string" minOccurs="0" maxOccurs="1" />
+         <xs:element name="Certificate" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+         <xs:element name="Password" type="xs:boolean" minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+   </xs:complexType>
+
+   <!-- Match rules for all devices:  all fields optional  -->
+   <xs:complexType name="matchrulestype">
+      <xs:all>
+         <xs:element name="SubjectRegExp" type="regexptype" minOccurs="0" maxOccurs="1" />
+         <xs:element name="ToRegExp" type="regexptype" minOccurs="0" maxOccurs="1" />
+         <xs:element name="FromRegExp" type="regexptype" minOccurs="0" maxOccurs="1" />
+         <xs:element name="CCRegExp" type="regexptype" minOccurs="0" maxOccurs="1" />
+         <xs:element name="BodyRegExp" type="regexptype" minOccurs="0" maxOccurs="1" />
+         <xs:element name="CustomFieldRegExp" type="customfieldtype" minOccurs="0" maxOccurs="1" >
+         </xs:element>
+      </xs:all>
+   </xs:complexType>
+  
+   <!-- type used for CredentialsCache tag -->
+   <xs:complexType name="supportcredentialstype">
+      <xs:simpleContent>
+         <xs:extension base="xs:boolean">
+            <xs:attribute name="key" type="credentialskeytype" use="required"  />
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+
+   <!-- type used for PersistAppDomain tag -->
+   <xs:complexType name="persistappdomaintype">
+      <xs:simpleContent>
+         <xs:extension base="xs:boolean">
+            <xs:attribute name="key" type="credentialskeytype" use="optional"  />
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+
+   <!-- type used for RequiresActivation tag -->
+   <xs:complexType name="requiresactivationtype">
+      <xs:simpleContent>
+         <xs:extension base="xs:boolean">
+            <xs:attribute name="key" type="credentialskeytype" use="optional"  />
+         </xs:extension>
+      </xs:simpleContent>
+   </xs:complexType>
+   
+   <!-- type used for SharedStorage tag -->
+   <xs:simpleType name="sharedstoragetype">
+      <xs:restriction base="xs:string">
+         <xs:minLength value="1"/>
+         <xs:maxLength value="64"/>
+      </xs:restriction>
+   </xs:simpleType>
+   
+   <!-- Overall file definition -->
+   <xs:element name="Manifest">
+      <xs:complexType>
+         <xs:all>
+
+            <!-- Module name required  -->
+            <xs:element name="ModuleName" maxOccurs="1" minOccurs="1" >
+               <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                     <xs:maxLength value="100"/>
+                     <xs:minLength value="1"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- Module description optional  -->
+            <xs:element name="ModuleDesc" maxOccurs="1" minOccurs="0" >
+               <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- Module display name optional  -->
+            <xs:element name="ModuleDisplayName" maxOccurs="1" minOccurs="0" >
+               <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- Module version required  -->
+            <xs:element name="ModuleVersion" minOccurs="1" maxOccurs="1" >
+               <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                     <xs:minInclusive value="1"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- Client icon index optional  -->
+            <xs:element name="ClientIconIndex" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:integer">
+                     <xs:minInclusive value="0"/>
+                  </xs:restriction>
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- InvokeOnClient optional  -->
+            <xs:element name="InvokeOnClient" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:boolean" />
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- RequiresActivation optional  -->
+            <xs:element name="RequiresActivation" minOccurs="0" maxOccurs="1" type="requiresactivationtype" />
+
+            <!-- MarkProcessedMessages optional -->
+            <xs:element name="MarkProcessedMessages" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:boolean" />
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- DeleteProcessedMessages optional  -->
+            <xs:element name="DeleteProcessedMessages" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:boolean" />
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- SaveResponseMessages optional -->
+            <xs:element name="SaveResponseMessages" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:boolean" />
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- ProcessUpdates optional  -->
+            <xs:element name="ProcessUpdates" minOccurs="0" maxOccurs="1">
+               <xs:simpleType>
+                  <xs:restriction base="xs:boolean" />
+               </xs:simpleType>
+            </xs:element>
+
+            <!-- SupportCredentialsCache optional  -->
+            <xs:element name="CredentialsCache" minOccurs="0" maxOccurs="1" type ="supportcredentialstype" />
+
+            <!-- PersistAppDomain optional  -->
+            <xs:element name="PersistAppDomain" minOccurs="0" maxOccurs="1" type ="persistappdomaintype" />
+
+            <!-- Server plugins must be defined  -->
+            <xs:element name="TransformPlugin" type="serverplugintype" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="ResponsePlugin" type="serverplugintype" minOccurs="1" maxOccurs="1"/>
+
+            <!-- Client plugins must be defined  -->
+            <xs:element name="ClientWorkflows" type="clientworkflowstype" minOccurs="1" maxOccurs="1"/>
+
+            <!-- Context variables and match rules are optional  -->
+            <xs:element name="ContextVariables" type="contextvariablestype" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="MatchRules" type="matchrulestype" minOccurs="0" maxOccurs="1"/>
+            
+         </xs:all>
+         
+      </xs:complexType>
+   </xs:element>
+</xs:schema>

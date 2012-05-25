@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Workflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="WorkflowClient.xsd" >
+  <Globals>
+    <DefaultScreens activation="" credentials=""/>
+  </Globals>
+  <Triggers> 
+    <Actions>
+      <Action name="Get_Customers" sourcescreen="Start" targetscreen="Customer" errorscreen="">
+        <Methods>
+          <Method name="findAll" type="search" mbo="Customer" package="HWCSencha:1.0" showCredScreenOnAuthFailure="true" >
+            <InputBinding optype="none" opname="findAll" generateOld="false">
+            </InputBinding>
+            <OutputBinding generateOld="true">			    
+              <Mapping workflowKey="Customer" workflowType="list" mboType="list">
+                 <Mapping workflowKey="Customer_id_attribKey" workflowType="number" attribName="id" mboType="int"/>
+                 <Mapping workflowKey="Customer_fname_attribKey" workflowType="text" attribName="fname" mboType="string"/>
+                 <Mapping workflowKey="Customer_lname_attribKey" workflowType="text" attribName="lname" mboType="string"/>
+                 <Mapping workflowKey="Customer_address_attribKey" workflowType="text" attribName="address" mboType="string"/>
+                 <Mapping workflowKey="Customer_city_attribKey" workflowType="text" attribName="city" mboType="string"/>
+                 <Mapping workflowKey="Customer_state_attribKey" workflowType="text" attribName="state" mboType="string"/>
+                 <Mapping workflowKey="Customer_zip_attribKey" workflowType="text" attribName="zip" mboType="string"/>
+                 <Mapping workflowKey="Customer_phone_attribKey" workflowType="text" attribName="phone" mboType="string"/>
+                 <Mapping workflowKey="Customer_company_name_attribKey" workflowType="text" attribName="company_name" mboType="string"/>
+              </Mapping>
+
+            </OutputBinding>
+          </Method>
+        </Methods>
+      </Action>
+      <Action name="Online_Request" sourcescreen="Customercreate" targetscreen="" errorscreen="">
+        <Methods>
+          <Method type="replay" mbo="Customer" package="HWCSencha:1.0" showCredScreenOnAuthFailure="true" >
+            <InputBinding optype="create" opname="create" generateOld="false">
+              <Value sourceType="Key" workflowKey="Customer_create_id_paramKey" paramName="id" attribName="id" mboType="int"/>
+              <Value sourceType="Key" workflowKey="Customer_create_fname_paramKey" paramName="fname" attribName="fname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_lname_paramKey" paramName="lname" attribName="lname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_address_paramKey" paramName="address" attribName="address" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_city_paramKey" paramName="city" attribName="city" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_state_paramKey" paramName="state" attribName="state" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_zip_paramKey" paramName="zip" attribName="zip" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_phone_paramKey" paramName="phone" attribName="phone" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_create_company_name_paramKey" paramName="company_name" attribName="company_name" mboType="string"/>			    
+                
+            </InputBinding>
+            <OutputBinding/>
+          </Method>
+        </Methods>
+      </Action>
+      <Action name="Online_Request" sourcescreen="Customerupdateinstance" targetscreen="" errorscreen="">
+        <Methods>
+          <Method type="replay" mbo="Customer" package="HWCSencha:1.0" showCredScreenOnAuthFailure="true" >
+            <InputBinding optype="update" opname="update" generateOld="true">
+              <Value sourceType="Key" workflowKey="Customer_fname_attribKey" paramName="fname" attribName="fname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_lname_attribKey" paramName="lname" attribName="lname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_address_attribKey" paramName="address" attribName="address" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_city_attribKey" paramName="city" attribName="city" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_state_attribKey" paramName="state" attribName="state" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_zip_attribKey" paramName="zip" attribName="zip" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_phone_attribKey" paramName="phone" attribName="phone" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_company_name_attribKey" paramName="company_name" attribName="company_name" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_id_attribKey" paramName="id" attribName="id" mboType="int"/>			    
+                
+            </InputBinding>
+            <OutputBinding/>
+          </Method>
+        </Methods>
+      </Action>
+      <Action name="Online_Request" sourcescreen="Customerdeleteinstance" targetscreen="" errorscreen="">
+        <Methods>
+          <Method type="replay" mbo="Customer" package="HWCSencha:1.0" showCredScreenOnAuthFailure="true" >
+            <InputBinding optype="delete" opname="delete" generateOld="true">
+              <Value sourceType="Key" workflowKey="Customer_id_attribKey" paramName="id" attribName="id" mboType="int"/>
+              <Value sourceType="Key" workflowKey="Customer_fname_attribKey" paramName="fname" attribName="fname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_lname_attribKey" paramName="lname" attribName="lname" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_address_attribKey" paramName="address" attribName="address" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_city_attribKey" paramName="city" attribName="city" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_state_attribKey" paramName="state" attribName="state" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_zip_attribKey" paramName="zip" attribName="zip" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_phone_attribKey" paramName="phone" attribName="phone" mboType="string"/>
+              <Value sourceType="Key" workflowKey="Customer_company_name_attribKey" paramName="company_name" attribName="company_name" mboType="string"/>			    
+                
+            </InputBinding>
+            <OutputBinding/>
+          </Method>
+        </Methods>
+      </Action>
+      <Action name="Submit" sourcescreen="Customer" targetscreen="" errorscreen="" asyncRequestErrorScreen="" errorNotificationSubjectLine="" errorNotificationFromLine="" asyncRequestErrorlogs="" asyncRequestErrorLogMessage="" asyncRequestErrorLogMessageAsList="">
+        <Methods>
+          <Method type="replay" mbo="Customer" package="HWCSencha:1.0" showCredScreenOnAuthFailure="true" >
+            <InputBinding optype="none" generateOld="false">			    
+                              <Value sourceType="Key" workflowKey="Customer" mboType="list">
+                <InputBinding optype="none">
+                  <Value sourceType="Key" workflowKey="Customer_id_attribKey" attribName="id" mboType="int"/>
+                  <Value sourceType="Key" workflowKey="Customer_fname_attribKey" attribName="fname" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_lname_attribKey" attribName="lname" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_address_attribKey" attribName="address" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_city_attribKey" attribName="city" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_state_attribKey" attribName="state" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_zip_attribKey" attribName="zip" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_phone_attribKey" attribName="phone" mboType="string"/>
+                  <Value sourceType="Key" workflowKey="Customer_company_name_attribKey" attribName="company_name" mboType="string"/>
+                </InputBinding>
+              </Value>
+
+            </InputBinding>
+            <OutputBinding/>
+          </Method>
+        </Methods>
+      </Action>
+    </Actions>
+    <Notifications>
+    </Notifications>
+  </Triggers>
+</Workflow>
+        

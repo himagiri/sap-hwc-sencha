@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" type="UEP" name="sup.model_diagram" measurementUnit="Pixel">
+  <children type="1001">
+    <children type="4001"/>
+    <children type="5001">
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.1"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.2"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.3"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.4"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.5"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.6"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.7"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.8"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2001">
+        <element href="sup.model#//@mObjects.0/@attributes.0"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <styles xsi:type="notation:DrawerStyle"/>
+      <styles xsi:type="notation:SortingStyle"/>
+      <styles xsi:type="notation:FilteringStyle"/>
+    </children>
+    <children type="5002">
+      <children type="2002">
+        <element href="sup.model#//@mObjects.0/@operations.0"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2002">
+        <element href="sup.model#//@mObjects.0/@operations.1"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <children type="2002">
+        <element href="sup.model#//@mObjects.0/@operations.2"/>
+        <layoutConstraint xsi:type="notation:Location"/>
+      </children>
+      <styles xsi:type="notation:DrawerStyle"/>
+      <styles xsi:type="notation:SortingStyle"/>
+      <styles xsi:type="notation:FilteringStyle"/>
+    </children>
+    <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8" lineColor="16744448"/>
+    <styles xsi:type="notation:IntValueStyle" name="Appearance.MBOWidth" intValue="115"/>
+    <styles xsi:type="notation:IntValueStyle" name="Appearance.MBOHeight" intValue="70"/>
+    <styles xsi:type="notation:ShapeStyle" fontColor="16777215" fontName="Segoe UI" fontHeight="8" bold="true" description="Title.styles" fillColor="16773345"/>
+    <element href="sup.model#_roGtMJvcEeGuw9LqTPxvTw"/>
+    <layoutConstraint xsi:type="notation:Bounds" x="63" y="238"/>
+  </children>
+  <styles xsi:type="notation:DiagramStyle"/>
+  <element href="sup.model#/"/>
+</notation:Diagram>

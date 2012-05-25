@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget>
+  <screens src="html/workflow.html" default="Start">
+    <screen key="html/workflow.html">
+    </screen>
+  </screens>
+  
+  <zoom>0</zoom>
+</widget>

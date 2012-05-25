@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uepmodels:EMODiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbcDatasourceExtension="platform:/resource/com.sybase.uep.datasource/model/JDBCOperationDefinition.ecore" xmlns:uepmodels="platform:/resource/com.sybase.uep.tooling.models/model/uepModels.ecore" modelVersion="2.1.3">
+  <mObjects name="Customer" id="_roGtMJvcEeGuw9LqTPxvTw">
+    <attributes name="id" type="INT" nullable="false" primaryKey="true" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.0">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="INT"/>
+    </attributes>
+    <attributes name="fname" type="STRING" length="15" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.1">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="lname" type="STRING" length="20" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.2">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="address" type="STRING" length="35" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.3">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="city" type="STRING" length="20" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.4">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="state" type="STRING" length="2" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.5">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="zip" type="STRING" length="10" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.6">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="phone" type="STRING" length="12" nullable="false" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.7">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <attributes name="company_name" type="STRING" length="35" primaryKey="false" fromColumn="//@mObjects.0/@read/@remoteOp/@metaData/@columnInfos.8">
+      <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING"/>
+    </attributes>
+    <operations name="create" type="create">
+      <parameters name="id" type="INT" defaultValue="0" nullable="false" kind="update" required="true" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.0">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+      </parameters>
+      <parameters name="fname" type="STRING" defaultValue="" length="15" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.1">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="lname" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.2">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="address" type="STRING" defaultValue="" length="35" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.3">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="city" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.4">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="state" type="STRING" defaultValue="" length="2" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.5">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="zip" type="STRING" defaultValue="" length="10" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.6">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="phone" type="STRING" defaultValue="" length="12" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.7">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="company_name" type="STRING" length="35" kind="update" toArgument="//@mObjects.0/@operations.0/@remoteOp/@metaData/@arguments.8">
+        <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <remoteOp profileName="supdevperf01">
+        <metaData>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.0" defaultValue="0" required="true" name="id" type="INT" isOperation="true">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.1" defaultValue="" required="true" name="fname" type="STRING" isOperation="true" length="15">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.2" defaultValue="" required="true" name="lname" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.3" defaultValue="" required="true" name="address" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.4" defaultValue="" required="true" name="city" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.5" defaultValue="" required="true" name="state" type="STRING" isOperation="true" length="2">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.6" defaultValue="" required="true" name="zip" type="STRING" isOperation="true" length="10">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.7" defaultValue="" required="true" name="phone" type="STRING" isOperation="true" length="12">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments fromAttribute="//@mObjects.0/@attributes.8" defaultValueNull="true" required="true" name="company_name" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+        </metaData>
+        <definition xsi:type="jdbcDatasourceExtension:EJDBCOperationDefinition" sqlQuery="INSERT INTO sampledb.dba.customer&#xA;(id,&#xA;fname,&#xA;lname,&#xA;address,&#xA;city,&#xA;state,&#xA;zip,&#xA;phone,&#xA;company_name)&#xA;VALUES&#xA;(:id,&#xA;:fname,&#xA;:lname,&#xA;:address,&#xA;:city,&#xA;:state,&#xA;:zip,&#xA;:phone,&#xA;:company_name&#xA;)"/>
+      </remoteOp>
+      <cachePolicyList>apply_operation_result</cachePolicyList>
+    </operations>
+    <operations name="update" type="update">
+      <parameters name="fname" type="STRING" defaultValue="" length="15" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.0" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.9">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="lname" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.1" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.10">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="address" type="STRING" defaultValue="" length="35" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.2" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.11">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="city" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.3" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.12">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="state" type="STRING" defaultValue="" length="2" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.4" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.13">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="zip" type="STRING" defaultValue="" length="10" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.5" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.14">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="phone" type="STRING" defaultValue="" length="12" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.6" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.15">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="company_name" type="STRING" length="35" kind="update" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.7" oldValueArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.16">
+        <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="id" type="INT" defaultValue="0" nullable="false" kind="search" required="true" toArgument="//@mObjects.0/@operations.1/@remoteOp/@metaData/@arguments.8">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+      </parameters>
+      <remoteOp profileName="supdevperf01">
+        <metaData>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.1" defaultValue="" required="true" name="fname" type="STRING" isOperation="true" length="15">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.2" defaultValue="" required="true" name="lname" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.3" defaultValue="" required="true" name="address" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.4" defaultValue="" required="true" name="city" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.5" defaultValue="" required="true" name="state" type="STRING" isOperation="true" length="2">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.6" defaultValue="" required="true" name="zip" type="STRING" isOperation="true" length="10">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.7" defaultValue="" required="true" name="phone" type="STRING" isOperation="true" length="12">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments fromAttribute="//@mObjects.0/@attributes.8" defaultValueNull="true" required="true" name="company_name" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.0" defaultValue="0" required="true" name="id" type="INT" isOperation="true">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.fname" type="STRING" isOperation="true" length="15">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.lname" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.address" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.city" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.state" type="STRING" isOperation="true" length="2">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.zip" type="STRING" isOperation="true" length="10">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.phone" type="STRING" isOperation="true" length="12">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments required="true" name="old.company_name" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+        </metaData>
+        <definition xsi:type="jdbcDatasourceExtension:EJDBCOperationDefinition" sqlQuery="UPDATE sampledb.dba.customer&#xA;SET&#xA;fname=:fname,&#xA;lname=:lname,&#xA;address=:address,&#xA;city=:city,&#xA;state=:state,&#xA;zip=:zip,&#xA;phone=:phone,&#xA;company_name=:company_name&#xA;WHERE (id = :id)&#xA; AND (fname = :old.fname)&#xA; AND (lname = :old.lname)&#xA; AND (address = :old.address)&#xA; AND (city = :old.city)&#xA; AND (state = :old.state)&#xA; AND (zip = :old.zip)&#xA; AND (phone = :old.phone)&#xA; AND (company_name = :old.company_name&#xA; OR (company_name IS NULL AND :old.company_name IS NULL))">
+          <method/>
+        </definition>
+      </remoteOp>
+      <cachePolicyList>apply_operation_result</cachePolicyList>
+    </operations>
+    <operations name="delete" type="delete">
+      <parameters name="id" type="INT" defaultValue="0" nullable="false" kind="search" required="true" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.0">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+      </parameters>
+      <parameters name="fname" type="STRING" defaultValue="" length="15" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.1" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.2">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="lname" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.3" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.4">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="address" type="STRING" defaultValue="" length="35" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.5" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.6">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="city" type="STRING" defaultValue="" length="20" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.7" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.8">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="state" type="STRING" defaultValue="" length="2" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.9" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.10">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="zip" type="STRING" defaultValue="" length="10" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.11" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.12">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="phone" type="STRING" defaultValue="" length="12" nullable="false" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.13" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.14">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <parameters name="company_name" type="STRING" length="35" kind="update" toArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.15" oldValueArgument="//@mObjects.0/@operations.2/@remoteOp/@metaData/@arguments.16">
+        <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+      </parameters>
+      <remoteOp profileName="supdevperf01">
+        <metaData>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.0" defaultValue="0" required="true" name="id" type="INT" isOperation="true">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.1" defaultValue="" required="true" name="fname" type="STRING" isOperation="true" length="15">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.fname" type="STRING" isOperation="true" length="15">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.2" defaultValue="" required="true" name="lname" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.lname" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.3" defaultValue="" required="true" name="address" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.address" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.4" defaultValue="" required="true" name="city" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.city" type="STRING" isOperation="true" length="20">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.5" defaultValue="" required="true" name="state" type="STRING" isOperation="true" length="2">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.state" type="STRING" isOperation="true" length="2">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.6" defaultValue="" required="true" name="zip" type="STRING" isOperation="true" length="10">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.zip" type="STRING" isOperation="true" length="10">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" fromAttribute="//@mObjects.0/@attributes.7" defaultValue="" required="true" name="phone" type="STRING" isOperation="true" length="12">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments nullable="false" required="true" name="old.phone" type="STRING" isOperation="true" length="12">
+            <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments fromAttribute="//@mObjects.0/@attributes.8" defaultValueNull="true" required="true" name="company_name" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+          <arguments required="true" name="old.company_name" type="STRING" isOperation="true" length="35">
+            <dataType xsi:type="uepmodels:EPrimitiveType" nullable="true" name="STRING" sqlType="12" javaType="java.lang.String"/>
+          </arguments>
+        </metaData>
+        <definition xsi:type="jdbcDatasourceExtension:EJDBCOperationDefinition" sqlQuery="DELETE FROM sampledb.dba.customer&#xA;WHERE (id = :id)&#xA; AND (:fname IS NOT NULL)&#xA; AND (fname = :old.fname)&#xA; AND (:lname IS NOT NULL)&#xA; AND (lname = :old.lname)&#xA; AND (:address IS NOT NULL)&#xA; AND (address = :old.address)&#xA; AND (:city IS NOT NULL)&#xA; AND (city = :old.city)&#xA; AND (:state IS NOT NULL)&#xA; AND (state = :old.state)&#xA; AND (:zip IS NOT NULL)&#xA; AND (zip = :old.zip)&#xA; AND (:phone IS NOT NULL)&#xA; AND (phone = :old.phone)&#xA; AND (1 = 1 &#xA; OR (company_name IS NULL AND :company_name IS NULL))&#xA; AND (company_name = :old.company_name&#xA; OR (company_name IS NULL AND :old.company_name IS NULL))">
+          <method/>
+        </definition>
+      </remoteOp>
+      <cachePolicyList>apply_operation_result</cachePolicyList>
+    </operations>
+    <read>
+      <remoteOp profileName="supdevperf01">
+        <metaData>
+          <columnInfos nullable="false" name="id" type="INT"/>
+          <columnInfos nullable="false" name="fname" type="STRING" length="15"/>
+          <columnInfos nullable="false" name="lname" type="STRING" length="20"/>
+          <columnInfos nullable="false" name="address" type="STRING" length="35"/>
+          <columnInfos nullable="false" name="city" type="STRING" length="20"/>
+          <columnInfos nullable="false" name="state" type="STRING" length="2"/>
+          <columnInfos nullable="false" name="zip" type="STRING" length="10"/>
+          <columnInfos nullable="false" name="phone" type="STRING" length="12"/>
+          <columnInfos name="company_name" type="STRING" length="35"/>
+        </metaData>
+        <definition xsi:type="jdbcDatasourceExtension:EJDBCOperationDefinition" sqlQuery="SELECT   id,&#xA;  fname,&#xA;  lname,&#xA;  address,&#xA;  city,&#xA;  state,&#xA;  zip,&#xA;  phone,&#xA;  company_name FROM sampledb.dba.customer">
+          <method selectedResultSet="//@mObjects.0/@read/@remoteOp/@definition/@method/@resultSets.0">
+            <resultSets name="RESULT SET - 1">
+              <columnInfos name="id" type="INT"/>
+              <columnInfos name="fname" type="STRING"/>
+              <columnInfos name="lname" type="STRING"/>
+              <columnInfos name="address" type="STRING"/>
+              <columnInfos name="city" type="STRING"/>
+              <columnInfos name="state" type="STRING"/>
+              <columnInfos name="zip" type="STRING"/>
+              <columnInfos name="phone" type="STRING"/>
+              <columnInfos name="company_name" type="STRING"/>
+            </resultSets>
+          </method>
+        </definition>
+      </remoteOp>
+    </read>
+    <namedQuery sqlQuery="SELECT x.* FROM Customer x &#xA;WHERE x.id = :id " name="findByPrimaryKey" isSystem="true">
+      <parameters name="id" type="INT" nullable="false" fromAttribute="//@mObjects.0/@attributes.0">
+        <dataType xsi:type="uepmodels:EPrimitiveType" name="INT" sqlType="4" javaType="int"/>
+      </parameters>
+    </namedQuery>
+    <publish/>
+    <subscribe>
+      <downloadData/>
+    </subscribe>
+  </mObjects>
+  <rootPackage name="/" mObjects="_roGtMJvcEeGuw9LqTPxvTw"/>
+  <personalizationKeys nullable="false" name="username" type="STRING">
+    <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+  </personalizationKeys>
+  <personalizationKeys nullable="false" name="password" type="STRING">
+    <dataType xsi:type="uepmodels:EPrimitiveType" name="STRING" sqlType="12" javaType="java.lang.String"/>
+  </personalizationKeys>
+  <publications name="Default" mObjects="_roGtMJvcEeGuw9LqTPxvTw" checkInterval="600" default="true"/>
+  <caches name="Default" default="true" mObjects="_roGtMJvcEeGuw9LqTPxvTw">
+    <policy xsi:type="uepmodels:EOnDemandPolicy">
+      <coherenceWindow/>
+    </policy>
+  </caches>
+</uepmodels:EMODiagram>
